@@ -88,6 +88,15 @@ clear(){
   render(){
     return(
     <div>
+      <Helmet>
+          <title>tienda de ropa</title>
+          <meta name="description" content="Home de la tienda" />
+          <meta property="og:url"              content="http//www.meawhat.tk" />
+          <meta property="og:type"               content="Calculator" />
+          <meta property="og:title"              content="Simple Calculator in React" />
+          <meta property="og:description"        content="Mohamed's Calculator" />
+          <meta property="og:image"              content="http//www.meawhat.tk/download.png" />
+      </Helmet>
       <div className="result">
 <span>
        {this.state.nums}
