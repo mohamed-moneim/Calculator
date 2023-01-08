@@ -80,6 +80,10 @@ console.log(arr)
   this.setState({nums:arr[0]})
 
 }
+clear(){
+  this.setState({nums:""})
+
+}
   
   render(){
     return(
