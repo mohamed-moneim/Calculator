@@ -31,31 +31,47 @@ class App extends React.Component {
 
    sum() {
     const arr =  this.state.nums.split(" ");
+    var sum;
     for(var x=0;x<=arr.length;x++){
-      var num = 0
-      var s = 0
-      if(!isNaN(arr[x])){
-        num = parseInt(arr[x])
-      }else{
-        if(arr[x]==="+"){
-          s = parseInt(arr[x-1])+parseInt(arr[x+1])
-          x+=2
-            }else if(arr[x]==="*"){
-              s = parseInt(arr[x-1])*parseInt(arr[x+1])
-              x+=2
-            }else if(arr[x]==="/"){
-              s = parseInt(arr[x-1])/parseInt(arr[x+1])
-              x+=2
-        }
-        else if(arr[x]==="-"){
-          s = parseInt(arr[x-1])-parseInt(arr[x+1])
-          x+=2
+      if(arr[x]=="*"){
+         sum = parseInt(arr[x-1])*parseInt(arr[x+1])
+         arr[x] = sum;
+         arr.splice(x+1,1 );
+         arr.splice(x-1, 1);
+
     }
-    alert(num)
-            }
-    }
-    this.setState({nums:s})
   }
+  for(var x=0;x<=arr.length;x++){
+    if(arr[x]=="/"){
+       sum = parseInt(arr[x-1])/parseInt(arr[x+1])
+       arr[x] = sum;
+       arr.splice(x+1, 1);
+       arr.splice(x-1, 1);
+
+  }
+}
+for(var x=0;x<=arr.length;x++){
+  if(arr[x]=="+"){
+    sum = parseInt(arr[x-1])+parseInt(arr[x+1])
+    arr[x] = sum;
+    arr.splice(x+1, 1);
+    arr.splice(x-1, 1);
+
+}
+}
+for(var x=0;x<=arr.length;x++){
+  if(arr[x]=="-"){
+    sum = parseInt(arr[x-1])-parseInt(arr[x+1])
+    arr[x] = sum;
+    arr.splice(x+1, 1);
+    arr.splice(x-1, 1);
+
+}
+}
+console.log(arr)
+  this.setState({nums:arr[0]})
+
+}
   
   render(){
     return(
@@ -84,8 +100,8 @@ class App extends React.Component {
   <div onClick={()=>this.addnum("*")}>*</div>  
 </div>
 <div className="flex-container">
-  <div onClick={()=>this.op(0)}>0</div>
-  <div onClick={()=>this.op(0)}>C.E.</div>
+  <div onClick={()=>this.addnum(0)}>0</div>
+  <div onClick={()=>this.clear()}>C.E.</div>
   <div onClick={()=>this.sum()}>=</div>  
   <div onClick={()=>this.addnum("/")}>/</div>  
 </div>
