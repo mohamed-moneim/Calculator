@@ -32,12 +32,14 @@ class App extends React.Component {
    sum() {
     const arr =  this.state.nums.split(" ");
     var sum;
+    var sum2
     for(var x=0;x<=arr.length;x++){
       if(arr[x]=="*"){
          sum = parseInt(arr[x-1])*parseInt(arr[x+1])
          arr[x] = sum;
-         arr.splice(x+1,1 );
+         arr.splice(x+1,1);
          arr.splice(x-1, 1);
+         x = 0;
 
     }
   }
@@ -47,6 +49,8 @@ class App extends React.Component {
        arr[x] = sum;
        arr.splice(x+1, 1);
        arr.splice(x-1, 1);
+       x = 0;
+
 
   }
 }
@@ -56,6 +60,8 @@ for(var x=0;x<=arr.length;x++){
     arr[x] = sum;
     arr.splice(x+1, 1);
     arr.splice(x-1, 1);
+    x = 0;
+
 
 }
 }
@@ -65,6 +71,8 @@ for(var x=0;x<=arr.length;x++){
     arr[x] = sum;
     arr.splice(x+1, 1);
     arr.splice(x-1, 1);
+    x = 0;
+
 
 }
 }
